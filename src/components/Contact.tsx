@@ -1,12 +1,12 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState, FormEvent } from "react";
+import { useState } from "react";
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false);
 
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
+  function handleSubmit(e) {
     e.preventDefault();
     setSubmitted(true);
   }

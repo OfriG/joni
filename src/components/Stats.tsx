@@ -10,15 +10,7 @@ const stats = [
   { value: 50, suffix: "M+", label: "Ad Spend Managed" },
 ];
 
-function AnimatedNumber({
-  value,
-  suffix,
-  inView,
-}: {
-  value: number;
-  suffix: string;
-  inView: boolean;
-}) {
+function AnimatedNumber({ value, suffix, inView }) {
   const [display, setDisplay] = useState(0);
 
   useEffect(() => {
