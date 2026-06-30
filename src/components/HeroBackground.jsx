@@ -1,6 +1,6 @@
 export default function HeroBackground() {
   return (
-    <div className="absolute inset-0 overflow-hidden">
+    <div className="absolute inset-0 overflow-hidden bg-black">
       {/* Video Background */}
       <video
         autoPlay
@@ -8,22 +8,13 @@ export default function HeroBackground() {
         loop
         playsInline
         preload="auto"
-        className="absolute top-1/2 left-1/2 h-auto min-h-full w-auto min-w-full -translate-x-1/2 -translate-y-1/2 object-cover"
+        className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/hero-video.mp4" type="video/mp4" />
+        <source src="/1.mp4" type="video/mp4" />
       </video>
 
-      {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/35" />
-
       {/* Gradient Overlay */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(245,215,110,0.08) 0%, rgba(123,63,160,0.15) 35%, rgba(10,22,40,0.55) 100%)",
-        }}
-      />
+      <div className="absolute inset-0 bg-black/25" />
 
       {/* Sun Rays */}
       <div className="absolute -top-20 -left-20 h-[600px] w-[600px] opacity-25">

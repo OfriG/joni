@@ -1,43 +1,44 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 const services = [
   {
     icon: "📊",
-    title: "SEO & Analytics",
+    title: "קידום SEO",
     description:
-      "Rank higher on search engines with data-backed keyword strategies and performance tracking.",
+      "שיפור נראות אורגנית במנועי חיפוש עם אסטרטגיה מותאמת ומעקב ביצועים.",
   },
   {
     icon: "📱",
-    title: "Social Media",
+    title: "ניהול רשתות חברתיות",
     description:
-      "Build engaged communities across platforms with compelling content and targeted campaigns.",
+      "קמפיינים חכמים, תוכן ממותג ותקשורת קהל שמייצרים אמון ומעורבות.",
   },
   {
     icon: "🎯",
-    title: "PPC Advertising",
+    title: "פרסום ממומן",
     description:
-      "Maximize ROI with precision-targeted ads on Google, Meta, and emerging platforms.",
+      "קמפייני PPC עם מיקוד חכם ושיפור מתמיד כדי למקסם תוצאות ותקציב.",
   },
   {
     icon: "✍️",
-    title: "Content Marketing",
+    title: "שיווק תוכן",
     description:
-      "Tell your brand story through blogs, videos, and campaigns that convert visitors into customers.",
+      "כתיבה אסטרטגית, עיצוב וניהול תוכן שמייצרים מסר ברור ורלוונטי.",
   },
   {
     icon: "🎨",
-    title: "Brand Strategy",
+    title: "מיתוג ודיגיטל",
     description:
-      "Define your identity with cohesive visual systems and messaging that resonates.",
+      "בניית זהות דיגיטלית חזקה עם קו ויזואלי מקצועי ונראות עקבית.",
   },
   {
     icon: "📧",
-    title: "Email Marketing",
+    title: "אוטומציה ושיווק",
     description:
-      "Nurture leads with automated sequences and personalized campaigns that drive sales.",
+      "תקשורת חכמה ללקוחות עם מערכת דיוור, ניתוח והמרה חכמה.",
   },
 ];
 
@@ -47,64 +48,90 @@ const container = {
 };
 
 const item = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  hidden: { opacity: 0, y: 28 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45 } },
 };
 
 export default function Services() {
-  return (
-    <section id="services" className="section-padding relative">
-      <div
-        className="absolute inset-0 opacity-30"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 0%, #4a2d8a44 0%, transparent 70%)",
-        }}
-      />
+  const [page, setPage] = useState(0);
+  const perPage = 3;
+  const totalPages = Math.ceil(services.length / perPage);
+  const visibleServices = services.slice(page * perPage, page * perPage + perPage);
 
-      <div className="relative mx-auto max-w-7xl">
+  return (
+    <section id="services" dir="rtl" className="min-h-screen w-full relative overflow-hidden">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/3.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-[#1a5a7a]/20 via-transparent to-transparent" />
+
+      <div className="relative mx-auto max-w-7xl h-full flex flex-col items-center justify-center py-12 px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-16 text-center"
+          transition={{ duration: 0.55 }}
+          className="mb-12 text-center"
         >
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-[#e85d75]">
-            What We Do
+          <p className="mb-3 text-6xl font-semibold uppercase  text-[#3b9fd9]">
+            השירותים שלנו
           </p>
-          <h2 className="text-3xl font-bold tracking-wide text-white md:text-5xl">
-            Our Services
+          <h2 className="text-3xl font-black tracking-tight text-white md:text-5xl">
+            שילוב של אסטרטגיה, יצירתיות ותוצאות
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-white/60">
-            Full-spectrum digital marketing solutions designed to grow your
-            brand and drive measurable results.
+          <p className="mx-auto mt-4 max-w-2xl text-white/70">
+            מבחר שירותים דיגיטליים מסודרים בסלייד חזק ושקוף, בדיוק כפי שצריך להיות באתר מקצועי.
           </p>
         </motion.div>
+
+        <div>
+
+        </div>
 
         <motion.div
           variants={container}
           initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3"
+          animate="show"
+          className="grid gap-6 lg:grid-cols-3"
         >
-          {services.map((service) => (
+          {visibleServices.map((service) => (
             <motion.div
               key={service.title}
               variants={item}
-              className="glass-card group rounded-2xl p-8 transition-all hover:border-[#e85d75]/30 hover:bg-white/[0.08]"
+              className="glass-card relative overflow-hidden rounded-[2rem] border border-white/10 bg-[#0d0a17]/80 p-8 shadow-[0_30px_90px_rgba(0,0,0,0.28)] transition-all hover:-translate-y-1 hover:border-[#3b9fd9]/30 hover:bg-white/[0.08]"
             >
-              <span className="mb-4 block text-3xl">{service.icon}</span>
-              <h3 className="mb-3 text-xl font-semibold text-white">
-                {service.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-white/60">
+              <span className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-3xl bg-[#3b9fd9]/10 text-3xl text-[#3b9fd9] shadow-sm shadow-[#3b9fd9]/10">
+                {service.icon}
+              </span>
+              <h3 className="mb-4 text-2xl font-semibold text-white text-right">{service.title}</h3>
+              <p className="text-sm leading-relaxed text-white/65 text-right">
                 {service.description}
               </p>
+              
             </motion.div>
           ))}
         </motion.div>
+
+        <div className="mt-10 flex items-center justify-center gap-3 text-sm text-white/60">
+          {Array.from({ length: totalPages }).map((_, index) => (
+            <button
+              key={index}
+              type="button"
+              onClick={() => setPage(index)}
+              className={`h-2.5 w-9 rounded-full transition ${
+                index === page ? "bg-[#3b9fd9]" : "bg-white/15 hover:bg-white/30"
+              }`}
+              aria-label={`עמוד ${index + 1}`}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );

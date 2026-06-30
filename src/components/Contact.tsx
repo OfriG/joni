@@ -12,31 +12,33 @@ export default function Contact() {
   }
 
   return (
-    <section id="contact" className="section-padding relative">
-      <div
-        className="absolute inset-0 opacity-20"
-        style={{
-          background:
-            "radial-gradient(ellipse at 50% 100%, #e85d7544 0%, transparent 60%)",
-        }}
-      />
+    
+    <section id="contact" dir="rtl" className="min-h-screen w-full relative overflow-hidden">
+      <video
+        autoPlay
+        muted
+        loop
+        playsInline
+        className="absolute inset-0 h-full w-full object-cover"
+      >
+        <source src="/4.mp4" type="video/mp4" />
+      </video>
+      <div className="absolute inset-0 bg-black/25" />
+      <div className="absolute inset-x-0 top-0 h-28 bg-gradient-to-b from-[#3b9fd9]/10 to-transparent" />
+      <div className="absolute right-0 top-24 hidden h-40 w-40 rounded-full bg-[#3b9fd9]/10 blur-3xl lg:block" />
 
-      <div className="relative mx-auto max-w-7xl">
+      <div className="relative z-10 mx-auto max-w-7xl h-full flex flex-col items-center justify-center py-12 px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-16 text-center"
+          className="mb-14 text-center"
         >
-          <p className="mb-3 text-sm font-medium uppercase tracking-[0.3em] text-[#e85d75]">
-            Get In Touch
-          </p>
-          <h2 className="text-3xl font-bold tracking-wide text-white md:text-5xl">
-            Start Your Journey
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-white/60">
-            Ready to transform your digital presence? Let&apos;s chart a course
-            to success together.
+         
+          <h2 className="text-3xl font-black tracking-tight text-white md:text-5xl">
+סיקרנתי אותך?          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-white/70">
+           מלא/י את הפרטים ואצור איתך קשר בהקדם.
           </p>
         </motion.div>
 
@@ -45,60 +47,77 @@ export default function Contact() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mx-auto max-w-xl"
+          className="mx-auto max-w-2xl px-6"
         >
           {submitted ? (
-            <div className="glass-card rounded-2xl p-10 text-center">
-              <p className="text-2xl font-semibold text-white">
-                Thank you!
-              </p>
-              <p className="mt-2 text-white/60">
-                We&apos;ll be in touch within 24 hours.
+            <div className="glass-card rounded-[2rem] border border-white/10 bg-[#0c0a16]/90 p-12 text-center shadow-[0_40px_120px_rgba(0,0,0,0.2)]">
+              <p className="text-3xl font-bold text-white">תודה!</p>
+              <p className="mt-4 text-white/70">
+                ההודעה נשלחה בהצלחה. נחזור אליכם בתוך יום עבודה.
               </p>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="glass-card space-y-5 rounded-2xl p-8 md:p-10">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label htmlFor="name" className="mb-2 block text-sm text-white/60">
-                  Name
+                <label className="text-sm text-white/60">
+                  <span>שם</span>
                 </label>
                 <input
                   id="name"
+                  name="name"
                   type="text"
                   required
-                  placeholder="Your name"
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 outline-none transition-colors focus:border-[#e85d75]/50"
+                  placeholder="שם מלא"
+                  className="w-full border-b-2 border-white bg-transparent px-0 py-3 text-white placeholder-white/40 outline-none transition focus:border-[#3b9fd9]"
                 />
               </div>
+
               <div>
-                <label htmlFor="email" className="mb-2 block text-sm text-white/60">
-                  Email
+                <label className="text-sm text-white/60">
+                  <span>אימייל</span>
                 </label>
                 <input
                   id="email"
+                  name="email"
                   type="email"
                   required
-                  placeholder="you@company.com"
-                  className="w-full rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 outline-none transition-colors focus:border-[#e85d75]/50"
+                  placeholder="you@example.com"
+                  className="w-full border-b-2 border-white bg-transparent px-0 py-3 text-white placeholder-white/40 outline-none transition focus:border-[#3b9fd9]"
                 />
               </div>
+
               <div>
-                <label htmlFor="message" className="mb-2 block text-sm text-white/60">
-                  Message
+                <label className="text-sm text-white/60">
+                  <span>טלפון</span>
+                </label>
+                <input
+                  id="phone"
+                  name="phone"
+                  type="tel"
+                  required
+                  placeholder="050-1234567"
+                  className="w-full border-b-2 border-white bg-transparent px-0 py-3 text-white placeholder-white/40 outline-none transition focus:border-[#3b9fd9]"
+                />
+              </div>
+
+              <div>
+                <label className="text-sm text-white/60">
+                  <span>הערות</span>
                 </label>
                 <textarea
-                  id="message"
-                  required
+                  id="notes"
+                  name="notes"
                   rows={4}
-                  placeholder="Tell us about your project..."
-                  className="w-full resize-none rounded-lg border border-white/10 bg-white/5 px-4 py-3 text-white placeholder-white/30 outline-none transition-colors focus:border-[#e85d75]/50"
+                  placeholder="כתבו את ההערות שלכם כאן..."
+                  className="w-full border-b-2 border-white bg-transparent px-0 py-3 text-white placeholder-white/40 outline-none transition focus:border-[#3b9fd9] resize-none"
                 />
               </div>
+
               <button
                 type="submit"
-                className="w-full rounded-sm bg-[#e85d75] py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white transition-all hover:bg-[#f07088] hover:-translate-y-0.5"
+                className="mt-8 w-full rounded-full bg-[#ff006e] px-7 py-3 text-sm font-semibold uppercase tracking-[0.2em] text-white transition hover:bg-[#ff3b8a]"
               >
-                Send Message
+                שלח
               </button>
             </form>
           )}

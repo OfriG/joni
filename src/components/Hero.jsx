@@ -9,34 +9,34 @@ export default function Hero() {
       <HeroBackground />
 
       <div className="relative z-10 flex min-h-screen w-full items-center px-6 sm:px-10 lg:px-20">
-        <div className="max-w-2xl text-right">
+        <div className="max-w-4xl text-right">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="text-5xl font-extrabold tracking-[0.15em] text-white sm:text-6xl md:text-7xl lg:text-8xl"
+            className="text-3xl font-extrabold tracking-[0.15em] text-white sm:text-3xl md:text-5xl lg:text-6xl"
           >
-            יהונתן כחלון
+שיווק טוב מתחיל ברעיון.
           </motion.h1>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.7 }}
-            className="mt-4 text-base font-light tracking-wide text-white/75 md:text-lg"
+            className="mt-4 text-2xl font-medium tracking-wide text-white md:text-4xl lg:text-5xl "
           >
-            משווק דיגיטלי
-          </motion.p>
+אני הופך אותו לקריאייטיב שאי אפשר להתעלם ממנו,
+משם לפרסום ממומן שמביא לקוחות.          </motion.p>
 
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 1 }}
-            className="mt-10"
+            className="mt-10 flex "
           >
             <a
-              href="#contact"
-              className="inline-block rounded-sm bg-[#e85d75] px-10 py-3.5 text-sm font-semibold uppercase tracking-[0.2em] text-white shadow-lg shadow-[#e85d75]/30 transition-all hover:-translate-y-0.5 hover:bg-[#f07088] hover:shadow-[#e85d75]/50"
+              href="#about"
+              className="inline-block rounded-sm bg-[#e85d75] px-10 py-3.5 text-md font-black uppercase tracking-[0.2em] text-white shadow-lg shadow-[#e85d75]/30 transition-all hover:-translate-y-0.5 hover:bg-[#f07088] hover:shadow-[#e85d75]/50"
             >
               בואו נצלול
             </a>
